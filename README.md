@@ -6,7 +6,8 @@ Zero-shot, multiple-choice, scored by exact letter, prompts in Azerbaijani. Any 
 |---|---|---|---|
 | `belebele-az` | Meta Belebele, azj_Latn (human-translated) | 900 | reading comprehension |
 | `include-az` | INCLUDE (Cohere/EPFL), real Azerbaijani academic and professional exam questions | 548 | regional knowledge |
-| *planned* | AzerbaijaniMMLU, ARC_Azerbaijani, Azerbaijani_Hist_MC / Lang_MC (gated on HF) | | knowledge, science, history, language |
+| `tumlu-az` | TUMLU-mini (Isbarov et al. 2025), native Azerbaijani school-exam questions, 4-choice | 700 | school knowledge across subjects |
+| *pending approval* | AzerbaijaniMMLU, ARC_Azerbaijani, Azerbaijani_Hist_MC / Lang_MC (gated on HF) | | knowledge, science, history, language |
 | *planned* | groundedness-az (SIBA) | | document-grounded answering |
 
 ```
