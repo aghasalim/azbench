@@ -32,7 +32,15 @@ def _gated(name, key, split, qk, ck, ak, tag):
         a = r[ak]; a = LETTERS.index(a.strip().upper()[0]) if isinstance(a, str) and a.strip().upper()[:1] in LETTERS else int(a)
         yield {'id': f'{tag}/{i}', 'prompt': _mc(r[qk], ch), 'choices': ch, 'answer': a, 'subject': str(r.get('subject') or r.get('category') or tag)}
 
-TASKS = {'belebele-az': belebele, 'include-az': include}
+def tumlu():
+    import ast
+    ds = load_dataset('jafarisbarov/TUMLU-mini', 'azerbaijani', split='test')
+    for i, r in enumerate(ds):
+        ch = ast.literal_eval(r['choices']) if isinstance(r['choices'], str) else list(r['choices'])
+        if len(ch) != 4 or r['answer'].strip().upper() not in LETTERS: continue
+        yield {'id': f'tumlu/{i}', 'prompt': _mc(r['question'], ch), 'choices': ch, 'answer': LETTERS.index(r['answer'].strip().upper()), 'subject': r['subject']}
+
+TASKS = {'belebele-az': belebele, 'include-az': include, 'tumlu-az': tumlu}
 
 def load(name):
     return list(TASKS[name]())
