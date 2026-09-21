@@ -1,0 +1,3 @@
+results/*/
+!results/leaderboard.json
+__pycache__/
