@@ -42,6 +42,7 @@ def main():
         for task in a.tasks.split(','):
             rows = load(task); rows = rows[:a.limit] if a.limit else rows
             res = out['tasks'].setdefault(task, {})
+            for k in [k for k, v in res.items() if v.get('pred') == -1 and (v.get('raw') or '').startswith(('ERROR', ''))]: res.pop(k)
             for r in rows:
                 if r['id'] in res: continue
                 for attempt in range(8):
@@ -56,7 +57,9 @@ def main():
                 if not txt:  # reasoning models spend the budget before the first visible token
                     try: txt = ask(base, key, model, r['prompt'], 4000)
                     except Exception: txt = ''
-                pred = letter(txt) if txt and not txt.startswith('ERROR') else -1
+                if not txt or txt.startswith('ERROR'):
+                    time.sleep(30); continue  # rate-limited or empty: leave it for the next pass
+                pred = letter(txt)
                 res[r['id']] = {'pred': pred, 'ok': pred == r['answer'], 'raw': txt[:80], 'subject': r['subject']}
                 json.dump(out, open(path, 'w'), ensure_ascii=False)
                 n = len(res); acc = sum(1 for x in res.values() if x['ok']) / n
