@@ -34,7 +34,7 @@ def main():
     ap.add_argument('--base', default=''); ap.add_argument('--key', default=''); ap.add_argument('--max-tokens', type=int, default=1024); ap.add_argument('--pace', type=float, default=0.5); ap.add_argument('--limit', type=int, default=0)
     a = ap.parse_args(); e = env()
     base = a.base or os.environ.get('OPENAI_BASE_URL') or 'https://api.groq.com/openai/v1'
-    key = a.key or os.environ.get('OPENAI_API_KEY') or (e.get('GROQ_API_KEY') if 'groq' in base else e.get('OPENROUTER_API_KEY', 'x')) or 'x'
+    key = a.key or os.environ.get('OPENAI_API_KEY') or (os.environ.get('GROQ_API_KEY') or e.get('GROQ_API_KEY') if 'groq' in base else os.environ.get('OPENROUTER_API_KEY') or e.get('OPENROUTER_API_KEY')) or 'x'
     provider = a.provider or ('groq' if 'groq' in base else 'openrouter' if 'openrouter' in base else 'local')
     for model in a.models.split(','):
         path = os.path.join(HERE, 'results', provider, model.replace('/', '__') + '.json'); os.makedirs(os.path.dirname(path), exist_ok=True)
