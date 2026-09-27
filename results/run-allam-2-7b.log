@@ -1,1 +1,12 @@
 allam-2-7b belebele-az 25/900 acc 0.240
+allam-2-7b belebele-az 50/900 acc 0.260
+allam-2-7b belebele-az 75/900 acc 0.253
+allam-2-7b belebele-az 100/900 acc 0.310
+allam-2-7b belebele-az 125/900 acc 0.280
+allam-2-7b belebele-az 150/900 acc 0.287
+allam-2-7b belebele-az 175/900 acc 0.269
+allam-2-7b belebele-az 200/900 acc 0.265
+allam-2-7b belebele-az 225/900 acc 0.258
+allam-2-7b belebele-az 250/900 acc 0.256
+/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-rkdc04t7'}
+  warnings.warn(

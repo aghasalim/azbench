@@ -1,0 +1,6 @@
+openai/gpt-oss-120b belebele-az 25/900 acc 0.840
+openai/gpt-oss-120b belebele-az 50/900 acc 0.780
+openai/gpt-oss-120b belebele-az 75/900 acc 0.853
+openai/gpt-oss-120b belebele-az 100/900 acc 0.850
+/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-efez0uav'}
+  warnings.warn(

@@ -1,3 +1,4 @@
-results/*/
 !results/leaderboard.json
 __pycache__/
+hf/
+results/*/

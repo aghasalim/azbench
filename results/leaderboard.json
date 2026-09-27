@@ -1,0 +1,52 @@
+{
+ "rows": [
+  {
+   "model": "qwen/qwen3.8-27b",
+   "provider": "groq",
+   "tasks": {
+    "belebele-az": {
+     "n": 143,
+     "acc": 0.8601,
+     "errors": 0
+    }
+   },
+   "mean": 0.8601
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "tasks": {
+    "belebele-az": {
+     "n": 114,
+     "acc": 0.8333,
+     "errors": 0
+    }
+   },
+   "mean": 0.8333
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "provider": "groq",
+   "tasks": {
+    "belebele-az": {
+     "n": 101,
+     "acc": 0.8317,
+     "errors": 0
+    }
+   },
+   "mean": 0.8317
+  },
+  {
+   "model": "allam-2-7b",
+   "provider": "groq",
+   "tasks": {
+    "belebele-az": {
+     "n": 254,
+     "acc": 0.252,
+     "errors": 112
+    }
+   },
+   "mean": 0.252
+  }
+ ]
+}

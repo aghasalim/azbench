@@ -1,6 +1,6 @@
 # azbench, the Azerbaijani LLM benchmark
 
-Zero-shot, multiple-choice, scored by exact letter, prompts in Azerbaijani. Any OpenAI-compatible endpoint (Groq, OpenRouter, vLLM, Ollama).
+Zero-shot, multiple-choice, scored by exact letter, prompts in Azerbaijani. The questions are on Hugging Face as [aghasalim/azbench](https://huggingface.co/datasets/aghasalim/azbench), one config per source, rebuilt with `python -m azbench.export_hf`. Any OpenAI-compatible endpoint (Groq, OpenRouter, vLLM, Ollama).
 
 | Task | Source | Items | What it measures |
 |---|---|---|---|
@@ -17,6 +17,6 @@ OPENAI_BASE_URL=http://localhost:11434/v1 python -m azbench.run --models meriste
 python -m azbench.table
 ```
 
-Results are per-item JSON under `results/<provider>/`, resumable. Leaderboard: `LEADERBOARD.md`, later azbench.siba.az.
+Results are per-item JSON under `results/<provider>/`, resumable. Leaderboard: `LEADERBOARD.md`. Chance is not 25 % everywhere: always answering D scores 42.7 % on tumlu-az.
 
 Aghasalim Mustafazada · SIBA, Baku · MIT
