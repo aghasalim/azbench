@@ -1,4 +1,4 @@
-# azbench — the Azerbaijani LLM benchmark
+# azbench, the Azerbaijani LLM benchmark
 
 Zero-shot, multiple-choice, scored by exact letter, prompts in Azerbaijani. Any OpenAI-compatible endpoint (Groq, OpenRouter, vLLM, Ollama).
 
