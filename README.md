@@ -1,5 +1,7 @@
 # azbench, the Azerbaijani LLM benchmark
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23003616.svg)](https://doi.org/10.5281/zenodo.23003616)
+
 Zero-shot, multiple-choice, scored by exact letter, prompts in Azerbaijani. The questions are on Hugging Face as [aghasalim/azbench](https://huggingface.co/datasets/aghasalim/azbench), one config per source, rebuilt with `python -m azbench.export_hf`. Any OpenAI-compatible endpoint (Groq, OpenRouter, vLLM, Ollama).
 
 | Task | Source | Items | What it measures |
