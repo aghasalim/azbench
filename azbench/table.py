@@ -14,6 +14,6 @@ json.dump({'rows': rows}, open(os.path.join(HERE, 'results', 'leaderboard.json')
 tasks = sorted({t for r in rows for t in r['tasks']})
 lines = ['| Model | Provider | ' + ' | '.join(tasks) + ' | Mean |', '|---|---|' + '---:|' * (len(tasks) + 1)]
 for r in rows:
-    lines.append(f"| `{r['model']}` | {r['provider']} | " + ' | '.join(f"{r['tasks'][t]['acc']:.1%} ({r['tasks'][t]['n']})" if t in r['tasks'] and r['tasks'][t]['acc'] is not None else '—' for t in tasks) + f" | **{r['mean']:.1%}** |")
+    lines.append(f"| `{r['model']}` | {r['provider']} | " + ' | '.join(f"{r['tasks'][t]['acc']:.1%} ({r['tasks'][t]['n']})" if t in r['tasks'] and r['tasks'][t]['acc'] is not None else 'n/a' for t in tasks) + f" | **{r['mean']:.1%}** |")
 open(os.path.join(HERE, 'LEADERBOARD.md'), 'w').write('# azbench leaderboard\n\nZero-shot, Azerbaijani, multiple choice, exact-letter scoring. Always giving the most common answer scores 27.9 % on belebele-az, 26.3 % on include-az and 42.7 % on tumlu-az, so read each column against that, not against 25 %.\n\n' + '\n'.join(lines) + '\n')
 print('\n'.join(lines))
