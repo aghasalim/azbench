@@ -21,4 +21,6 @@ python -m azbench.table
 
 Results are per-item JSON under `results/<provider>/`, resumable. Leaderboard: `LEADERBOARD.md`. Chance is not 25 % everywhere: always answering D scores 42.7 % on tumlu-az.
 
+First complete runs, both 3B models at Q4_K_M through Ollama ([`results/ollama/`](results/ollama/)): my SIBA Meristem fine-tune scores 40.0 % on include-az against 36.9 % for its base model Qwen2.5-3B-Instruct, but 38.9 % on belebele-az against 45.2 %, so the fine-tune cost reading comprehension. On tumlu-az both sit below the 42.7 % of always answering D. The per-question files for these two runs were lost on the GPU pod, so only the totals are kept.
+
 Aghasalim Mustafazada · SIBA, Baku · MIT

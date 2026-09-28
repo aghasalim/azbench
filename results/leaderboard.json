@@ -1,16 +1,50 @@
 {
  "rows": [
   {
-   "model": "qwen/qwen3.8-27b",
-   "provider": "groq",
+   "model": "qwen2.5:3b-instruct",
+   "provider": "ollama",
    "tasks": {
     "belebele-az": {
-     "n": 143,
-     "acc": 0.8601,
+     "n": 900,
+     "acc": 0.4522,
+     "errors": 0
+    },
+    "include-az": {
+     "n": 548,
+     "acc": 0.3686,
+     "errors": 0
+    },
+    "tumlu-az": {
+     "n": 700,
+     "acc": 0.36,
      "errors": 0
     }
    },
-   "mean": 0.8601
+   "mean": 0.3936,
+   "complete": true
+  },
+  {
+   "model": "aghasalim/siba-meristem-1.0",
+   "provider": "ollama",
+   "tasks": {
+    "belebele-az": {
+     "n": 900,
+     "acc": 0.3889,
+     "errors": 0
+    },
+    "include-az": {
+     "n": 548,
+     "acc": 0.3996,
+     "errors": 0
+    },
+    "tumlu-az": {
+     "n": 700,
+     "acc": 0.3771,
+     "errors": 0
+    }
+   },
+   "mean": 0.3885,
+   "complete": true
   },
   {
    "model": "openai/gpt-oss-120b",
@@ -22,7 +56,8 @@
      "errors": 0
     }
    },
-   "mean": 0.8333
+   "mean": null,
+   "complete": false
   },
   {
    "model": "openai/gpt-oss-20b",
@@ -34,7 +69,8 @@
      "errors": 0
     }
    },
-   "mean": 0.8317
+   "mean": null,
+   "complete": false
   },
   {
    "model": "allam-2-7b",
@@ -46,7 +82,21 @@
      "errors": 112
     }
    },
-   "mean": 0.252
+   "mean": null,
+   "complete": false
+  },
+  {
+   "model": "qwen/qwen3.8-27b",
+   "provider": "groq",
+   "tasks": {
+    "belebele-az": {
+     "n": 143,
+     "acc": 0.8601,
+     "errors": 0
+    }
+   },
+   "mean": null,
+   "complete": false
   }
  ]
 }
