@@ -24,7 +24,7 @@
    "complete": true
   },
   {
-   "model": "aghasalim/siba-meristem-1.0",
+   "model": "aghasalim/siba-meristem-1.0:1.0.1",
    "provider": "ollama",
    "tasks": {
     "belebele-az": {
