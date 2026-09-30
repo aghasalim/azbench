@@ -23,4 +23,6 @@ Results are per-item JSON under `results/<provider>/`, resumable. Leaderboard: `
 
 First complete runs, both 3B models at Q4_K_M through Ollama ([`results/ollama/`](results/ollama/)): my SIBA Meristem 1.0.1 fine-tune scores 40.0 % on include-az against 36.9 % for its base model Qwen2.5-3B-Instruct, but 38.9 % on belebele-az against 45.2 %, so the fine-tune cost reading comprehension. On tumlu-az both sit below the 42.7 % of always answering D. The per-question files for these two runs were lost on the GPU pod, so only the totals are kept.
 
+The three tasks also run on Kaggle Benchmarks, from the [Kaggle copy of the dataset](https://www.kaggle.com/datasets/aghasalimmustafazada/azbench) with the same prompts and scoring. Gemini 3.7 Flash ran three times there at temperature 0 and answered 835, 840 and 838 of 900 belebele-az; 473, 476 and 476 of 548 include-az; 660, 658 and 658 of 700 tumlu-az correctly. The largest spread is 5 of 900, about 0.6 points, so two models closer than that on one task are within what a single model does from run to run. The answers behind these counts are in [`results/kaggle/`](results/kaggle/), and `python -m azbench.kaggle_repeats check` recomputes them and fails if this paragraph disagrees.
+
 Aghasalim Mustafazada · SIBA, Baku · MIT
