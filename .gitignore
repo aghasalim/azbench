@@ -1,4 +1,7 @@
 !results/leaderboard.json
 __pycache__/
 hf/
-results/*/
+# Per-question files stay local. A run whose per-question files were lost
+# keeps its totals in summary.json, which the leaderboard reads, so it is kept.
+results/*/*
+!results/*/summary.json
