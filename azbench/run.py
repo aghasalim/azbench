@@ -29,6 +29,11 @@ def letter(text):
     m = re.search(r'\b([ABCD])\b', text.upper())
     return LETTERS.index(m.group(1)) if m else -1
 
+def to_retry(res):
+    """Ids to ask again on resume: failed calls and empty replies. A real reply that
+    just had no letter in it is a wrong answer and stays."""
+    return [k for k, v in res.items() if v.get('pred') == -1 and (not v.get('raw') or v['raw'].startswith('ERROR'))]
+
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--models', required=True); ap.add_argument('--tasks', default=','.join(TASKS)); ap.add_argument('--provider', default='')
     ap.add_argument('--base', default=''); ap.add_argument('--key', default=''); ap.add_argument('--max-tokens', type=int, default=1024); ap.add_argument('--pace', type=float, default=0.5); ap.add_argument('--limit', type=int, default=0)
@@ -42,7 +47,7 @@ def main():
         for task in a.tasks.split(','):
             rows = load(task); rows = rows[:a.limit] if a.limit else rows
             res = out['tasks'].setdefault(task, {})
-            for k in [k for k, v in res.items() if v.get('pred') == -1 and (v.get('raw') or '').startswith(('ERROR', ''))]: res.pop(k)
+            for k in to_retry(res): res.pop(k)
             for r in rows:
                 if r['id'] in res: continue
                 for attempt in range(8):
