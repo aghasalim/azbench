@@ -1,0 +1,33 @@
+{
+ "note": "Totals from the runner's final lines on an RTX 3090, Ollama, Q4_K_M, max_tokens 32, temperature 0, 2026-09-28. The per-question files were not recovered from the pod, so these are counts only. The Meristem run pulled the Ollama tag latest, which is 1.0.1 (digest 80deca0d15a4).",
+ "models": {
+  "aghasalim/siba-meristem-1.0:1.0.1": {
+   "belebele-az": [
+    350,
+    900
+   ],
+   "include-az": [
+    219,
+    548
+   ],
+   "tumlu-az": [
+    264,
+    700
+   ]
+  },
+  "qwen2.5:3b-instruct": {
+   "belebele-az": [
+    407,
+    900
+   ],
+   "include-az": [
+    202,
+    548
+   ],
+   "tumlu-az": [
+    252,
+    700
+   ]
+  }
+ }
+}
