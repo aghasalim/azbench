@@ -19,3 +19,5 @@ jobs:
       # quotes different numbers. No network needed.
       - name: README matches the repeat runs
         run: python -m azbench.kaggle_repeats check
+      - name: Tests
+        run: pip install datasets pytest && python -m pytest tests/ -q
