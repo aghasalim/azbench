@@ -26,8 +26,13 @@ def ask(base, key, model, prompt, max_tokens):
         return (json.load(r)['choices'][0]['message'].get('content') or '').strip()
 
 def letter(text):
-    m = re.search(r'\b([ABCD])\b', text.upper())
-    return LETTERS.index(m.group(1)) if m else -1
+    """An explicit 'Cavab: X' wins; otherwise the last standalone capital A-D, so a
+    reply that thinks aloud before answering is read by its conclusion. Lowercase
+    letters count only when there is no capital at all, so an English article 'a'
+    is not read as A."""
+    m = re.findall(r'cavab\w*\s*[:\-]?\s*\(?\b([ABCD])\b', text, re.I)
+    m = m or re.findall(r'\b([ABCD])\b', text) or re.findall(r'\b([ABCD])\b', text.upper())
+    return LETTERS.index(m[-1].upper()) if m else -1
 
 def to_retry(res):
     """Ids to ask again on resume: failed calls and empty replies. A real reply that
