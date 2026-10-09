@@ -28,3 +28,16 @@ from azbench.run import letter
 ])
 def test_letter(text, want):
     assert letter(text) == want
+
+
+def test_ollama_totals_are_committed_and_match_the_leaderboard():
+    """README links results/ollama/ and its two complete rows come from summary.json."""
+    import json
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1]
+    summary = json.loads((root / 'results/ollama/summary.json').read_text())
+    board = {(r['model'], r['provider']): r for r in json.loads((root / 'results/leaderboard.json').read_text())['rows']}
+    for model, tasks in summary['models'].items():
+        row = board[(model, 'ollama')]
+        for task, (correct, n) in tasks.items():
+            assert row['tasks'][task] == {'n': n, 'acc': round(correct / n, 4), 'errors': 0}
