@@ -21,7 +21,15 @@ python -m azbench.table
 
 Results go to per-item JSON under `results/<provider>/`, so a run can pick up where it stopped. The leaderboard is in `LEADERBOARD.md`. Watch out for the chance level. It isn't 25 % on every task, and on tumlu-az you get 42.7 % just by always answering D.
 
+![belebele-az accuracy for every model run so far](results/belebele.png)
+
+belebele-az is the only task every model has started. Whiskers are 95 % Wilson intervals over the questions answered. The Groq runs are unfinished, so they cover only the first 101 to 254 questions and have no rank.
+
 My first complete runs compared two 3B models at Q4_K_M through Ollama ([`results/ollama/`](results/ollama/)). One is my SIBA Meristem 1.0.1 fine-tune and the other is its base model, Qwen2.5-3B-Instruct. On include-az the fine-tune got 40.0 % and the base got 36.9 %. On belebele-az it went the other way, 38.9 % against 45.2 %, so my fine-tuning hurt reading comprehension. Neither model beat always answering D on tumlu-az (42.7 %). I lost the per-question files for these two runs on the GPU pod, so I only have the totals.
+
+![accuracy per task for the complete runs](results/per_task.png)
+
+Accuracy per task for the two complete Ollama runs and Gemini 3.7 Flash on Kaggle (black dots are its three runs), against always answering the most common letter. `python scripts/make_figures.py` rebuilds both figures from `results/`.
 
 The three tasks also run on Kaggle Benchmarks. They use the [Kaggle copy of the dataset](https://www.kaggle.com/datasets/aghasalimmustafazada/azbench) with the same prompts and scoring. I wanted to know how much a score moves between runs, so I ran Gemini 3.7 Flash three times there at temperature 0. Across the three runs it got 835, 840 and 838 of 900 belebele-az; 473, 476 and 476 of 548 include-az; 660, 658 and 658 of 700 tumlu-az right. The largest spread is 5 of 900, which is about 0.6 points. If two models are closer than that on a task, I wouldn't call either one better. The answers behind these counts are in [`results/kaggle/`](results/kaggle/). Running `python -m azbench.kaggle_repeats check` recomputes them and fails if this paragraph disagrees.
 
