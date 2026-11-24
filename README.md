@@ -6,6 +6,8 @@
 
 I wanted a simple way to check how well LLMs handle Azerbaijani, so I put this together. Every task is zero-shot multiple choice with the prompt in Azerbaijani, and I score the answer by its exact letter. The questions are on Hugging Face as [aghasalim/azbench](https://huggingface.co/datasets/aghasalim/azbench), one config per source, and `python -m azbench.export_hf` rebuilds them. It runs against any OpenAI-compatible endpoint, so Groq, OpenRouter, vLLM and Ollama all work.
 
+## Tasks
+
 | Task | Source | Items | What it measures |
 |---|---|---|---|
 | `belebele-az` | Meta Belebele, azj_Latn (human-translated) | 900 | reading comprehension |
@@ -13,6 +15,8 @@ I wanted a simple way to check how well LLMs handle Azerbaijani, so I put this t
 | `tumlu-az` | TUMLU-mini (Isbarov et al. 2025), native Azerbaijani school-exam questions, 4-choice | 700 | school knowledge across subjects |
 | *pending approval* | AzerbaijaniMMLU, ARC_Azerbaijani, Azerbaijani_Hist_MC / Lang_MC (gated on HF) | | knowledge, science, history, language |
 | *planned* | groundedness-az (SIBA) | | document-grounded answering |
+
+## Run it
 
 ```
 pip install datasets
@@ -22,6 +26,8 @@ python -m azbench.table
 ```
 
 Results go to per-item JSON under `results/<provider>/`, so a run can pick up where it stopped. The leaderboard is in `LEADERBOARD.md`. Watch out for the chance level. It isn't 25 % on every task, and on tumlu-az you get 42.7 % just by always answering D.
+
+## Results
 
 ![belebele-az accuracy for every model run so far](results/belebele.png)
 
@@ -33,6 +39,24 @@ My first complete runs compared two 3B models at Q4_K_M through Ollama ([`result
 
 Accuracy per task for the two complete Ollama runs and Gemini 3.7 Flash on Kaggle (black dots are its three runs), against always answering the most common letter. `python scripts/make_figures.py` rebuilds both figures from `results/`.
 
+## How much a score moves between runs
+
 The three tasks also run on Kaggle Benchmarks. They use the [Kaggle copy of the dataset](https://www.kaggle.com/datasets/aghasalimmustafazada/azbench) with the same prompts and scoring. I wanted to know how much a score moves between runs, so I ran Gemini 3.7 Flash three times there at temperature 0. Across the three runs it got 835, 840 and 838 of 900 belebele-az; 473, 476 and 476 of 548 include-az; 660, 658 and 658 of 700 tumlu-az right. The largest spread is 5 of 900, which is about 0.6 points. If two models are closer than that on a task, I wouldn't call either one better. The answers behind these counts are in [`results/kaggle/`](results/kaggle/). Running `python -m azbench.kaggle_repeats check` recomputes them and fails if this paragraph disagrees.
+
+## Citation
+
+If you use this benchmark, please cite it. The same record is in [`CITATION.cff`](CITATION.cff).
+
+```bibtex
+@software{mustafazada2026azbench,
+  author  = {Mustafazada, Aghasalim},
+  title   = {azbench, the Azerbaijani LLM benchmark},
+  year    = {2026},
+  doi     = {10.5281/zenodo.23003616},
+  url     = {https://github.com/aghasalim/azbench}
+}
+```
+
+## Licence
 
 Aghasalim Mustafazada · SIBA, Baku · code under MIT, the question sets keep their own licences ([`NOTICE`](NOTICE))
