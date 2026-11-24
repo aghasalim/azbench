@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.jpg" alt="Line drawing of a ruler under a row of answer bubbles, framed by a border of buta ornaments" width="100%"></p>
+
 # azbench, the Azerbaijani LLM benchmark
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23003616.svg)](https://doi.org/10.5281/zenodo.23003616)
