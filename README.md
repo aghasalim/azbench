@@ -33,4 +33,4 @@ Accuracy per task for the two complete Ollama runs and Gemini 3.7 Flash on Kaggl
 
 The three tasks also run on Kaggle Benchmarks. They use the [Kaggle copy of the dataset](https://www.kaggle.com/datasets/aghasalimmustafazada/azbench) with the same prompts and scoring. I wanted to know how much a score moves between runs, so I ran Gemini 3.7 Flash three times there at temperature 0. Across the three runs it got 835, 840 and 838 of 900 belebele-az; 473, 476 and 476 of 548 include-az; 660, 658 and 658 of 700 tumlu-az right. The largest spread is 5 of 900, which is about 0.6 points. If two models are closer than that on a task, I wouldn't call either one better. The answers behind these counts are in [`results/kaggle/`](results/kaggle/). Running `python -m azbench.kaggle_repeats check` recomputes them and fails if this paragraph disagrees.
 
-Aghasalim Mustafazada · SIBA, Baku · MIT
+Aghasalim Mustafazada · SIBA, Baku · code under MIT, the question sets keep their own licences ([`NOTICE`](NOTICE))
